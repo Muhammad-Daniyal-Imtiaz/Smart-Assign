@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, Quote } from "lucide-react"
+import Image from "next/image"
 
 export function TestimonialsSection() {
   const stats = [
@@ -24,7 +25,7 @@ export function TestimonialsSection() {
     },
     {
       quote:
-        "The mobile app they developed for us has been a game-changer. User engagement is up 200% and the app store ratings are consistently 5 stars. Couldn't be happier with the results.",
+        "The mobile app they developed for us has been a game-changer. User engagement is up 200% and the app store ratings are consistently 5 stars. Couldn&apos;t be happier with the results.",
       name: "Marcus Johnson",
       position: "Product Manager",
       company: "HealthTech Solutions",
@@ -75,7 +76,7 @@ export function TestimonialsSection() {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Don't just take our word for it - hear from our satisfied clients
+            Don&apos;t just take our word for it - hear from our satisfied clients
           </p>
         </div>
 
@@ -95,9 +96,11 @@ export function TestimonialsSection() {
             <Card key={index} className="glass-card hover:scale-105 transition-all duration-300">
               <CardHeader>
                 <div className="flex items-start space-x-4">
-                  <img
+                  <Image
                     src={testimonial.image || "/placeholder.svg"}
                     alt={testimonial.name}
+                    width={48}
+                    height={48}
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div className="flex-1">
@@ -114,7 +117,7 @@ export function TestimonialsSection() {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 leading-relaxed text-sm">"{testimonial.quote}"</p>
+                <p className="text-muted-foreground mb-4 leading-relaxed text-sm">&quot;{testimonial.quote}&quot;</p>
                 <div>
                   <div className="font-semibold text-sm">{testimonial.name}</div>
                   <div className="text-xs text-muted-foreground">

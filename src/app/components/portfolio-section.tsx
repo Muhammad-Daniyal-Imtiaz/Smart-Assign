@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export function PortfolioSection() {
   const projects = [
@@ -67,9 +68,11 @@ export function PortfolioSection() {
           {projects.map((project, index) => (
             <Card key={index} className="glass-card hover:scale-105 transition-all duration-300 group overflow-hidden">
               <div className="relative overflow-hidden">
-                <img
+                <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
+                  width={400}
+                  height={192}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute top-4 left-4">
@@ -103,7 +106,7 @@ export function PortfolioSection() {
         <Card className="glass-card text-center p-8">
           <h3 className="text-2xl font-semibold mb-4">Want to See More?</h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            We've completed over 1,200 projects across various industries. Contact us to see more examples relevant to
+            We&apos;ve completed over 1,200 projects across various industries. Contact us to see more examples relevant to
             your business needs.
           </p>
           <Button size="lg" className="bg-primary hover:bg-primary/90">

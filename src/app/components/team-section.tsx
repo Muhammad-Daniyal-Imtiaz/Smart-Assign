@@ -3,6 +3,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Linkedin, Twitter, Mail } from "lucide-react"
+import Image from "next/image"
 
 export function TeamSection() {
   const founder = {
@@ -69,7 +70,7 @@ export function TeamSection() {
       image: "/professional-french-female-ux-researcher-headshot.jpg",
     },
     {
-      name: "Ryan O'Connor",
+      name: "Ryan O&apos;Connor",
       position: "Security Specialist",
       experience: "8 years",
       image: "/professional-male-cybersecurity-specialist-headsho.jpg",
@@ -103,9 +104,11 @@ export function TeamSection() {
           <CardContent className="p-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
               <div className="lg:col-span-1">
-                <img
+                <Image
                   src={founder.image || "/placeholder.svg"}
                   alt={founder.name}
+                  width={400}
+                  height={400}
                   className="w-full max-w-sm mx-auto rounded-2xl shadow-lg"
                 />
               </div>
@@ -146,9 +149,11 @@ export function TeamSection() {
           {teamMembers.map((member, index) => (
             <Card key={index} className="glass-card hover:scale-105 transition-all duration-300 group">
               <CardContent className="p-6 text-center">
-                <img
+                <Image
                   src={member.image || "/placeholder.svg"}
                   alt={member.name}
+                  width={96}
+                  height={96}
                   className="w-24 h-24 rounded-full mx-auto mb-4 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <h4 className="font-semibold text-lg mb-1">{member.name}</h4>

@@ -17,8 +17,15 @@ import {
   Headphones,
 } from "lucide-react"
 
+interface Service {
+  icon: React.ComponentType<{ className?: string }>
+  title: string
+  description: string
+  features: string[]
+}
+
 export function ServicesSection() {
-  const coreServices = [
+  const coreServices: Service[] = [
     {
       icon: Code,
       title: "Web Development",
@@ -57,7 +64,7 @@ export function ServicesSection() {
     },
   ]
 
-  const additionalServices = [
+  const additionalServices: Service[] = [
     {
       icon: Globe,
       title: "Cloud Solutions",
@@ -96,7 +103,7 @@ export function ServicesSection() {
     },
   ]
 
-  const ServiceCard = ({ service, index }: { service: any; index: number }) => (
+  const ServiceCard = ({ service }: { service: Service }) => (
     <Card className="glass-card hover:scale-105 transition-all duration-300 group">
       <CardHeader>
         <div className="flex items-center space-x-3 mb-3">
@@ -138,7 +145,7 @@ export function ServicesSection() {
           <h3 className="text-2xl font-semibold mb-8 text-center">Our Core Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {coreServices.map((service, index) => (
-              <ServiceCard key={index} service={service} index={index} />
+              <ServiceCard key={index} service={service} />
             ))}
           </div>
         </div>
@@ -148,7 +155,7 @@ export function ServicesSection() {
           <h3 className="text-2xl font-semibold mb-8 text-center">Additional Specialized Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {additionalServices.map((service, index) => (
-              <ServiceCard key={index} service={service} index={index} />
+              <ServiceCard key={index} service={service} />
             ))}
           </div>
         </div>

@@ -1,15 +1,6 @@
 "use client"
 
-// Update the import path below if your Card components are located elsewhere
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Award, Heart, Target } from "lucide-react"
 
 export function ValuesSection() {
