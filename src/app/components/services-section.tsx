@@ -1,3 +1,4 @@
+// app/components/services-section.tsx
 "use client"
 
 import { useState, useEffect } from "react"
@@ -17,6 +18,7 @@ import {
   Camera,
   Headphones,
 } from "lucide-react"
+import Image from "next/image"
 
 interface Service {
   icon: React.ComponentType<{ className?: string }>
@@ -131,10 +133,11 @@ export function ServicesSection() {
     >
       {service.image && (
         <div className="h-48 relative overflow-hidden">
-          <img
+          <Image
             src={service.image}
             alt={service.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
         </div>

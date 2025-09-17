@@ -1,3 +1,4 @@
+// app/api/applications/route.ts
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -9,8 +10,10 @@ interface JobApplicationSubmitData {
   phone_number_2?: string;
   current_residence: string;
   cv_url?: string;
+  cv_live_preview_url?: string;
   cover_letter_text?: string;
   cover_letter_url?: string;
+  cover_letter_live_preview_url?: string;
 }
 
 interface ApplicationResponse {
@@ -34,8 +37,10 @@ export async function POST(request: NextRequest) {
       phone_number_2,
       current_residence,
       cv_url,
+      cv_live_preview_url,
       cover_letter_text,
-      cover_letter_url
+      cover_letter_url,
+      cover_letter_live_preview_url
     } = body;
 
     // Validate required fields
@@ -57,8 +62,10 @@ export async function POST(request: NextRequest) {
           phone_number_2: phone_number_2 || null,
           current_residence,
           cv_url: cv_url || null,
+          cv_live_preview_url: cv_live_preview_url || null,
           cover_letter_text: cover_letter_text || null,
-          cover_letter_url: cover_letter_url || null
+          cover_letter_url: cover_letter_url || null,
+          cover_letter_live_preview_url: cover_letter_live_preview_url || null
         }
       ])
       .select();

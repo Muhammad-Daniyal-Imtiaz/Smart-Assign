@@ -1,10 +1,11 @@
+// app/components/job/page.tsx
 'use client';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { motion, Variants } from 'framer-motion';
 import {
   User, Mail, Phone, MapPin, FileText, Upload,
-  CheckCircle, AlertCircle, Loader2, Briefcase, ExternalLink
+  CheckCircle, AlertCircle, Loader2, Briefcase
 } from 'lucide-react';
 
 // Type definitions
@@ -34,7 +35,7 @@ interface JobApplicationSubmitData {
 
 interface ApplicationResponse {
   message?: string;
-  data?: any;
+  data?: unknown;
   error?: string;
 }
 
@@ -88,9 +89,10 @@ export default function JobApplicationForm() {
   const [currentUpload, setCurrentUpload] = useState<string>('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, files } = e.target as HTMLInputElement;
+    const { name, value } = e.target;
 
     if (name === 'cv' || name === 'cover_letter_file') {
+      const files = (e.target as HTMLInputElement).files;
       setFormData({ ...formData, [name]: files ? files[0] : null });
     } else {
       setFormData({ ...formData, [name]: value });
@@ -111,10 +113,7 @@ export default function JobApplicationForm() {
       .upload(storagePath, file, {
         cacheControl: '3600',
         upsert: false,
-        contentType: file.type,
-        onUploadProgress: (progress) => {
-          setUploadProgress(progress.percent);
-        }
+        contentType: file.type
       });
 
     if (uploadError) throw uploadError;
@@ -234,7 +233,7 @@ export default function JobApplicationForm() {
             <Briefcase className="h-10 w-10 text-blue-600" />
           </motion.div>
           <h1 className="text-3xl font-bold text-white mb-2">Join Our Team</h1>
-          <p className="text-blue-100">We're excited to learn more about you and your qualifications</p>
+          <p className="text-blue-100">We&apos;re excited to learn more about you and your qualifications</p>
         </div>
 
         <motion.div
@@ -495,7 +494,7 @@ export default function JobApplicationForm() {
         </motion.div>
 
         <div className="mt-8 text-center text-blue-100 text-sm">
-          <p>We'll get back to you within 3-5 business days after reviewing your application.</p>
+          <p>We&apos;ll get back to you within 3-5 business days after reviewing your application.</p>
         </div>
       </motion.div>
     </div>
