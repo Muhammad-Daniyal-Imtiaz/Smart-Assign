@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
 export function Header() {
@@ -24,24 +23,16 @@ export function Header() {
   }
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={{
-        background:
-          "linear-gradient(90deg, #EFECE9 0%, #D1EBDB 25%, #959D90 50%, #D1EBDB 75%, #EFECE9 100%)",
-        boxShadow: "0 4px 20px rgba(25, 37, 36, 0.2)",
-        borderBottom: "2px solid #1A3A3C",
-      }}
-    >
-      <div className="container mx-auto px-4 py-2">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b-4 border-[#2E8B57] shadow-lg">
+      <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo with zoom effect */}
           <div
             className="flex items-center justify-center transition-all duration-300 hover:scale-110 overflow-hidden"
             style={{
               backgroundColor: "rgba(239, 236, 233, 0.7)",
-              border: "2px solid #1A3A3C",
-              boxShadow: "0 6px 16px rgba(26, 58, 60, 0.3)",
+              border: "2px solid #2E8B57",
+              boxShadow: "0 6px 16px rgba(46, 139, 87, 0.3)",
               borderRadius: "50%",
               width: "90px",
               height: "90px",
@@ -56,150 +47,59 @@ export function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-2">
+          <nav className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="font-medium transition-all duration-300 px-4 py-2 rounded-xl relative group"
-                style={{
-                  color: "#192524",
-                  backgroundColor: "rgba(239, 236, 233, 0.7)",
-                  border: "2px solid #1A3A3C",
-                  boxShadow: "0 2px 6px rgba(26, 58, 60, 0.15)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#305759"
-                  e.currentTarget.style.color = "#EFECE9"
-                  e.currentTarget.style.transform = "scale(1.05)"
-                  e.currentTarget.style.boxShadow =
-                    "0 6px 16px rgba(48, 87, 89, 0.3)"
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor =
-                    "rgba(239, 236, 233, 0.7)"
-                  e.currentTarget.style.color = "#192524"
-                  e.currentTarget.style.transform = "scale(1)"
-                  e.currentTarget.style.boxShadow =
-                    "0 2px 6px rgba(26, 58, 60, 0.15)"
-                }}
+                className="font-medium text-[#2E8B57] transition-all duration-300 relative group px-4 py-2 rounded-lg border-2 border-[#2E8B57] hover:border-transparent hover:bg-[#2E8B57] hover:text-white"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#EFECE9] transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute inset-0 border-2 border-transparent group-hover:border-white group-hover:scale-105 transition-all duration-300 rounded-lg"></span>
               </button>
             ))}
           </nav>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center">
-            <Button
-              className="font-semibold transition-all duration-300 px-6 py-2 rounded-xl"
-              style={{
-                backgroundColor: "#192524",
-                color: "#EFECE9",
-                border: "2px solid #1A3A3C",
-                boxShadow: "0 4px 12px rgba(25, 37, 36, 0.3)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#305759"
-                e.currentTarget.style.transform = "scale(1.05)"
-                e.currentTarget.style.boxShadow =
-                  "0 6px 16px rgba(48, 87, 89, 0.4)"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#192524"
-                e.currentTarget.style.transform = "scale(1)"
-                e.currentTarget.style.boxShadow =
-                  "0 4px 12px rgba(25, 37, 36, 0.3)"
-              }}
+            <button
+              className="font-semibold transition-all duration-300 px-6 py-2 rounded-full bg-[#2E8B57] hover:bg-[#1f5f3d] text-white border-2 border-[#2E8B57] hover:border-[#1f5f3d] shadow-lg hover:shadow-emerald-200/50 hover:scale-105"
+              onClick={() => scrollToSection("#contact")}
             >
               Get Started
-            </Button>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <Button
-              variant="ghost"
-              size="sm"
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="transition-all duration-300 rounded-xl"
-              style={{
-                color: "#192524",
-                border: "2px solid #1A3A3C",
-                backgroundColor: "rgba(239, 236, 233, 0.7)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#305759"
-                e.currentTarget.style.color = "#EFECE9"
-                e.currentTarget.style.transform = "scale(1.05)"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor =
-                  "rgba(239, 236, 233, 0.7)"
-                e.currentTarget.style.color = "#192524"
-                e.currentTarget.style.transform = "scale(1)"
-              }}
+              className="p-2 rounded-lg text-[#2E8B57] hover:text-white hover:bg-[#2E8B57] transition-colors duration-300 border-2 border-[#2E8B57]"
             >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div
-            className="md:hidden mt-4 pb-4 rounded-xl"
-            style={{
-              border: "2px solid #1A3A3C",
-              backgroundColor: "rgba(239, 236, 233, 0.9)",
-              boxShadow: "0 8px 24px rgba(26, 58, 60, 0.2)",
-            }}
-          >
-            <nav className="flex flex-col space-y-3 mt-4 p-2">
+          <div className="md:hidden mt-4 pb-4 bg-white border-2 border-[#2E8B57] rounded-xl shadow-lg">
+            <nav className="flex flex-col space-y-3 p-4">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-left font-medium transition-all duration-300 px-4 py-3 rounded-lg"
-                  style={{
-                    color: "#192524",
-                    backgroundColor: "rgba(255, 255, 255, 0.7)",
-                    border: "2px solid #1A3A3C",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "#305759"
-                    e.currentTarget.style.color = "#EFECE9"
-                    e.currentTarget.style.transform = "scale(1.02)"
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor =
-                      "rgba(255, 255, 255, 0.7)"
-                    e.currentTarget.style.color = "#192524"
-                    e.currentTarget.style.transform = "scale(1)"
-                  }}
+                  className="text-left font-medium text-[#2E8B57] transition-all duration-300 px-4 py-3 rounded-lg border-2 border-[#2E8B57] hover:border-transparent hover:bg-[#2E8B57] hover:text-white"
                 >
                   {item.name}
                 </button>
               ))}
-              <Button
-                className="w-full mt-2 font-semibold py-3 rounded-lg transition-all duration-300"
-                style={{
-                  backgroundColor: "#192524",
-                  color: "#EFECE9",
-                  border: "2px solid #1A3A3C",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#305759"
-                  e.currentTarget.style.transform = "scale(1.02)"
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#192524"
-                  e.currentTarget.style.transform = "scale(1)"
-                }}
+              <button
+                className="bg-[#2E8B57] hover:bg-[#1f5f3d] text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300 mt-2 border-2 border-[#2E8B57] hover:border-[#1f5f3d]"
+                onClick={() => scrollToSection("#contact")}
               >
                 Get Started
-              </Button>
+              </button>
             </nav>
           </div>
         )}
