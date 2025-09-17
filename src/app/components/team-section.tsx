@@ -8,7 +8,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 export function TeamSection() {
   const founder = {
-    name: "Sarah Johnson",
+    name: "Abubakar Arif",
     position: "Founder & CEO",
     experience: "12+ years",
     bio: "Sarah is a visionary leader with over 12 years of experience in technology and business development. She founded Smart Assign with the mission to help businesses leverage technology for growth. Under her leadership, the company has grown from a small startup to a trusted partner for over 500 businesses worldwide.",
