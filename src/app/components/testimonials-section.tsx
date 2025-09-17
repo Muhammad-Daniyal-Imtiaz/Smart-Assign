@@ -28,7 +28,7 @@ export function TestimonialsSection() {
     },
     {
       quote:
-        "The mobile app they developed for us has been a game-changer. User engagement is up 200% and the app store ratings are consistently 5 stars. Couldn't be happier with the results.",
+        "The mobile app they developed for us has been a game-changer. User engagement is up 200% and the app store ratings are consistently 5 stars. Couldn&apos;t be happier with the results.",
       name: "Marcus Johnson",
       position: "Product Manager",
       company: "HealthTech Solutions",
@@ -77,7 +77,7 @@ export function TestimonialsSection() {
               Client <span className="text-emerald-600">Testimonials</span>
             </h2>
             <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Don't just take our word for it – hear from our satisfied clients
+              Don&apos;t just take our word for it – hear from our satisfied clients
             </p>
           </div>
         </div>
@@ -98,7 +98,7 @@ export function TestimonialsSection() {
             Client <span className="text-emerald-600">Testimonials</span>
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            Don't just take our word for it – hear from our satisfied clients
+            Don&apos;t just take our word for it – hear from our satisfied clients
           </p>
         </div>
 
@@ -156,7 +156,7 @@ export function TestimonialsSection() {
                 <Quote className="h-6 w-6 text-emerald-300 flex-shrink-0" />
               </div>
               <p className="text-slate-700 mb-4 leading-relaxed text-sm">
-                "{testimonial.quote}"
+                &quot;{testimonial.quote}&quot;
               </p>
               <div>
                 <div className="font-semibold text-sm text-emerald-800">

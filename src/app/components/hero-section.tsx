@@ -57,7 +57,7 @@ export function HeroSection() {
               Professional <span className="text-[#66CDAA]">Micro-Services</span> for Growing Businesses
             </h1>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              We provide specialized, high-quality services that help businesses streamline operations and accelerate growth. From content creation to data management, we've got you covered.
+              We provide specialized, high-quality services that help businesses streamline operations and accelerate growth. From content creation to data management, we&apos;ve got you covered.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
