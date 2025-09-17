@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Linkedin, Twitter, Mail } from "lucide-react"
 import Image from "next/image"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 export function TeamSection() {
   const founder = {
@@ -21,110 +22,61 @@ export function TeamSection() {
   }
 
   const teamMembers = [
-    {
-      name: "Michael Chen",
-      position: "CTO",
-      experience: "10 years",
-      image: "/placeholder-pjqjf.png",
-    },
-    {
-      name: "Emily Rodriguez",
-      position: "Head of Design",
-      experience: "8 years",
-      image: "/placeholder-grlv7.png",
-    },
-    {
-      name: "David Thompson",
-      position: "Lead Developer",
-      experience: "9 years",
-      image: "/placeholder-uwujm.png",
-    },
-    {
-      name: "Lisa Wang",
-      position: "Marketing Director",
-      experience: "7 years",
-      image: "/placeholder-dk5ux.png",
-    },
-    {
-      name: "James Wilson",
-      position: "Project Manager",
-      experience: "6 years",
-      image: "/professional-male-project-manager-headshot.jpg",
-    },
-    {
-      name: "Anna Kowalski",
-      position: "Data Scientist",
-      experience: "5 years",
-      image: "/female-data-scientist-headshot.png",
-    },
-    {
-      name: "Carlos Martinez",
-      position: "DevOps Engineer",
-      experience: "7 years",
-      image: "/professional-hispanic-male-devops-engineer-headsho.jpg",
-    },
-    {
-      name: "Sophie Laurent",
-      position: "UX Researcher",
-      experience: "4 years",
-      image: "/professional-french-female-ux-researcher-headshot.jpg",
-    },
-    {
-      name: "Ryan O&apos;Connor",
-      position: "Security Specialist",
-      experience: "8 years",
-      image: "/professional-male-cybersecurity-specialist-headsho.jpg",
-    },
-    {
-      name: "Priya Patel",
-      position: "Business Analyst",
-      experience: "6 years",
-      image: "/professional-indian-female-business-analyst-headsh.jpg",
-    },
-    {
-      name: "Tom Anderson",
-      position: "Quality Assurance Lead",
-      experience: "9 years",
-      image: "/professional-male-qa-engineer-headshot.jpg",
-    },
+    { name: "Michael Chen", position: "CTO", experience: "10 years", image: "/placeholder-pjqjf.png" },
+    { name: "Emily Rodriguez", position: "Head of Design", experience: "8 years", image: "/placeholder-grlv7.png" },
+    { name: "David Thompson", position: "Lead Developer", experience: "9 years", image: "/placeholder-uwujm.png" },
+    { name: "Lisa Wang", position: "Marketing Director", experience: "7 years", image: "/placeholder-dk5ux.png" },
+    { name: "James Wilson", position: "Project Manager", experience: "6 years", image: "/professional-male-project-manager-headshot.jpg" },
+    { name: "Anna Kowalski", position: "Data Scientist", experience: "5 years", image: "/female-data-scientist-headshot.png" },
+    { name: "Carlos Martinez", position: "DevOps Engineer", experience: "7 years", image: "/professional-hispanic-male-devops-engineer-headsho.jpg" },
+    { name: "Sophie Laurent", position: "UX Researcher", experience: "4 years", image: "/professional-french-female-ux-researcher-headshot.jpg" },
+    { name: "Ryan O'Connor", position: "Security Specialist", experience: "8 years", image: "/professional-male-cybersecurity-specialist-headsho.jpg" },
+    { name: "Priya Patel", position: "Business Analyst", experience: "6 years", image: "/professional-indian-female-business-analyst-headsh.jpg" },
+    { name: "Tom Anderson", position: "Quality Assurance Lead", experience: "9 years", image: "/professional-male-qa-engineer-headshot.jpg" },
   ]
 
   return (
-    <section id="team" className="py-20">
+    <section id="team" className="py-24 bg-gradient-to-b from-background via-muted/30 to-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
+        {/* Section Heading */}
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+            Meet Our <span className="text-primary">Team</span>
+          </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Talented professionals dedicated to delivering exceptional results
+            A passionate team of experts committed to delivering world-class digital solutions.
           </p>
         </div>
 
         {/* Founder Spotlight */}
-        <Card className="glass-card mb-16 max-w-4xl mx-auto">
-          <CardContent className="p-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-              <div className="lg:col-span-1">
+        <Card className="glass-card shadow-xl mb-20 max-w-5xl mx-auto border border-border/40">
+          <CardContent className="p-10">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+              {/* Founder Image */}
+              <div className="lg:col-span-1 relative">
                 <Image
-                  src={founder.image || "/placeholder.svg"}
+                  src={founder.image}
                   alt={founder.name}
                   width={400}
                   height={400}
-                  className="w-full max-w-sm mx-auto rounded-2xl shadow-lg"
+                  className="w-full max-w-sm mx-auto rounded-2xl shadow-xl object-cover"
                 />
-              </div>
-              <div className="lg:col-span-2">
-                <div className="flex items-center gap-4 mb-4">
-                  <div>
-                    <h3 className="text-2xl font-bold">{founder.name}</h3>
-                    <p className="text-primary font-medium">{founder.position}</p>
-                    <Badge variant="secondary" className="mt-2">
-                      {founder.experience} experience
-                    </Badge>
-                  </div>
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+                  <Badge variant="secondary" className="px-4 py-1 text-sm font-medium shadow-md">
+                    {founder.experience} Experience
+                  </Badge>
                 </div>
+              </div>
+
+              {/* Founder Info */}
+              <div className="lg:col-span-2">
+                <h3 className="text-3xl font-bold mb-1">{founder.name}</h3>
+                <p className="text-primary font-medium text-lg mb-4">{founder.position}</p>
                 <p className="text-muted-foreground mb-6 leading-relaxed">{founder.bio}</p>
-                <div className="space-y-2">
-                  <h4 className="font-semibold mb-3">Key Achievements:</h4>
+
+                {/* Achievements */}
+                <div>
+                  <h4 className="font-semibold mb-3">Key Achievements</h4>
                   <ul className="space-y-2">
                     {founder.achievements.map((achievement, index) => (
                       <li key={index} className="text-sm text-muted-foreground flex items-center">
@@ -134,31 +86,57 @@ export function TeamSection() {
                     ))}
                   </ul>
                 </div>
-                <div className="flex gap-4 mt-6">
-                  <Linkedin className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
-                  <Twitter className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
-                  <Mail className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
+
+                {/* Social Links */}
+                <div className="flex gap-5 mt-8">
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Linkedin className="h-6 w-6 text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
+                      </TooltipTrigger>
+                      <TooltipContent>LinkedIn</TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Twitter className="h-6 w-6 text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
+                      </TooltipTrigger>
+                      <TooltipContent>Twitter</TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Mail className="h-6 w-6 text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
+                      </TooltipTrigger>
+                      <TooltipContent>Email</TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
                 </div>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Team Members Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {teamMembers.map((member, index) => (
-            <Card key={index} className="glass-card hover:scale-105 transition-all duration-300 group">
-              <CardContent className="p-6 text-center">
+            <Card
+              key={index}
+              className="glass-card hover:scale-105 transition-all duration-300 group border border-border/40 shadow-md"
+            >
+              <CardContent className="p-8 text-center">
                 <Image
-                  src={member.image || "/placeholder.svg"}
+                  src={member.image}
                   alt={member.name}
                   width={96}
                   height={96}
-                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover group-hover:scale-110 transition-transform duration-500 shadow-lg"
                 />
                 <h4 className="font-semibold text-lg mb-1">{member.name}</h4>
-                <p className="text-primary text-sm mb-2">{member.position}</p>
-                <Badge variant="outline" className="text-xs">
+                <p className="text-primary text-sm font-medium mb-2">{member.position}</p>
+                <Badge variant="outline" className="text-xs px-2 py-0.5">
                   {member.experience} exp.
                 </Badge>
               </CardContent>

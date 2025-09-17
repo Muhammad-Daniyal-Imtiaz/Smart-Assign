@@ -1,156 +1,97 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Play, Star, Shield, Zap, Database, Cpu } from "lucide-react"
+import { Shield, Zap, Database, Cpu } from "lucide-react"
+import Image from "next/image"
 
 export function HeroSection() {
-  const clientLogos = ["Microsoft", "Google", "Amazon", "Apple", "Meta", "Netflix"]
-
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #EFECE9 0%, #D1EBDB 30%, #959D90 70%, #D1EBDB 100%)",
-      }}
-    >
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-balance leading-tight mb-4">
-              <span style={{ color: "#192524" }}>Professional </span>
-              <span style={{ color: "#305759" }}>Micro-Services</span>
-              <br />
-              <span style={{ color: "#192524" }}>for Growing Businesses</span>
+    <section id="home" className="relative overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0 top-16 sm:top-20 z-0">
+        <Image
+          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop"
+          alt="Background"
+          fill
+          className="object-cover object-center brightness-[0.7] contrast-100"
+          priority
+          sizes="100vw"
+        />
+        {/* Gradient overlays for better readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 via-transparent to-teal-600/30" />
+      </div>
+
+      {/* Content */}
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="flex flex-col items-center justify-center text-center min-h-screen py-20 sm:py-28">
+          {/* Headings */}
+          <div className="mb-12 sm:mb-16 md:mb-20 max-w-4xl">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
+              <span className="text-white">Professional </span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-300">
+                Micro-Services
+              </span>
             </h1>
+            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-medium text-gray-200 mt-6">
+              For Growing Businesses Worldwide
+            </h2>
+
+            {/* CTA */}
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="#services"
+                className="inline-block bg-teal-500 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold shadow-xl hover:bg-teal-600 hover:shadow-teal-500/40 transition-all duration-300"
+              >
+                Get Started
+              </a>
+              <a
+                href="#learn-more"
+                className="inline-block border border-white/40 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
+              >
+                Learn More
+              </a>
+            </div>
           </div>
 
-          {/* Feature badges */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          {/* Feature Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl w-full">
             {[
-              { icon: Shield, text: "Enterprise Security" },
-              { icon: Zap, text: "Lightning Fast" },
-              { icon: Database, text: "Infinitely Scalable" },
-              { icon: Cpu, text: "AI-Powered" },
-            ].map(({ icon: Icon, text }, index) => (
+              {
+                icon: Shield,
+                text: "Enterprise Security",
+                desc: "Military-grade protection for your data and systems",
+              },
+              {
+                icon: Zap,
+                text: "Lightning Fast",
+                desc: "Blazing performance for the best user experience",
+              },
+              {
+                icon: Database,
+                text: "Infinitely Scalable",
+                desc: "Grow without limits with our elastic infrastructure",
+              },
+              {
+                icon: Cpu,
+                text: "AI-Powered",
+                desc: "Intelligent solutions that learn and adapt to your needs",
+              },
+            ].map(({ icon: Icon, text, desc }, index) => (
               <div
                 key={index}
-                className="backdrop-blur-sm border px-4 py-2 rounded-lg transition-all duration-300"
-                style={{
-                  backgroundColor: "rgba(239, 236, 233, 0.8)",
-                  borderColor: "#959D90",
-                }}
+                className="group backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6 sm:p-8 flex flex-col items-center text-center shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-teal-400/50"
               >
-                <div className="flex items-center gap-2">
-                  <Icon className="h-4 w-4" style={{ color: "#305759" }} />
-                  <span className="font-medium text-sm" style={{ color: "#192524" }}>
-                    {text}
-                  </span>
+                <div className="bg-gradient-to-r from-teal-500 to-cyan-400 p-4 rounded-full mb-5 shadow-md group-hover:shadow-teal-500/50 transition-all">
+                  <Icon className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                 </div>
+                <h3 className="font-semibold text-lg sm:text-xl md:text-2xl text-white mb-2">
+                  {text}
+                </h3>
+                <p className="text-sm sm:text-base text-gray-200 opacity-90 leading-relaxed">
+                  {desc}
+                </p>
               </div>
             ))}
-          </div>
-
-          <div className="mb-10">
-            <p
-              className="text-lg md:text-xl leading-relaxed font-medium max-w-3xl mx-auto"
-              style={{ color: "#192524" }}
-            >
-              We deliver specialized, enterprise-grade micro-services that streamline operations and accelerate growth.
-              From intelligent automation to scalable data solutions, we provide the foundation for your digital
-              transformation.
-            </p>
-          </div>
-
-          {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button
-              size="lg"
-              className="text-lg font-semibold rounded-lg transition-all duration-300 px-8 py-3"
-              style={{
-                backgroundColor: "#192524",
-                color: "#EFECE9",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#305759"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#192524"
-              }}
-            >
-              Explore Services
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg font-semibold rounded-lg transition-all duration-300 px-8 py-3 bg-transparent"
-              style={{
-                backgroundColor: "transparent",
-                color: "#192524",
-                borderColor: "#305759",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#305759"
-                e.currentTarget.style.color = "#EFECE9"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent"
-                e.currentTarget.style.color = "#192524"
-              }}
-            >
-              <Play className="mr-2 h-5 w-5" />
-              View Portfolio
-            </Button>
-          </div>
-
-          {/* Client logos */}
-          <div className="mb-8">
-            <div
-              className="backdrop-blur-sm rounded-xl p-6 border"
-              style={{
-                backgroundColor: "rgba(209, 235, 219, 0.3)",
-                borderColor: "#959D90",
-              }}
-            >
-              <p className="text-sm font-medium mb-6" style={{ color: "#192524" }}>
-                Trusted by industry leaders
-              </p>
-              <div className="flex flex-wrap justify-center items-center gap-6">
-                {clientLogos.map((logo, index) => (
-                  <div
-                    key={index}
-                    className="px-6 py-3 rounded-lg transition-all duration-300"
-                    style={{
-                      backgroundColor: "rgba(239, 236, 233, 0.6)",
-                      borderColor: "#959D90",
-                    }}
-                  >
-                    <span className="font-medium text-sm" style={{ color: "#192524" }}>
-                      {logo}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Reviews */}
-          <div
-            className="inline-flex items-center gap-3 backdrop-blur-sm rounded-lg px-6 py-3 border"
-            style={{
-              backgroundColor: "rgba(239, 236, 233, 0.6)",
-              borderColor: "#959D90",
-            }}
-          >
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-              ))}
-            </div>
-            <span className="font-medium text-sm" style={{ color: "#192524" }}>
-              4.9/5 from 500+ reviews
-            </span>
           </div>
         </div>
       </div>

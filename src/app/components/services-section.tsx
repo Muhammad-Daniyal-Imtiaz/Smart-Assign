@@ -104,26 +104,39 @@ export function ServicesSection() {
   ]
 
   const ServiceCard = ({ service }: { service: Service }) => (
-    <Card className="glass-card hover:scale-105 transition-all duration-300 group">
+    <Card
+      className="group backdrop-blur-lg bg-white/70 dark:bg-slate-800/70 border border-white/20 dark:border-slate-700/40 
+                 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+    >
       <CardHeader>
-        <div className="flex items-center space-x-3 mb-3">
-          <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-            <service.icon className="h-6 w-6 text-primary" />
+        <div className="flex items-center space-x-3 mb-4">
+          <div
+            className="p-3 rounded-xl bg-gradient-to-tr from-teal-400 to-blue-500 text-white shadow-md 
+                       group-hover:scale-105 transition-transform"
+          >
+            <service.icon className="h-6 w-6" />
           </div>
-          <CardTitle className="text-lg">{service.title}</CardTitle>
+          <CardTitle className="text-lg font-semibold">{service.title}</CardTitle>
         </div>
-        <p className="text-muted-foreground text-sm">{service.description}</p>
+        <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
       </CardHeader>
       <CardContent>
-        <ul className="space-y-2 mb-4">
+        <ul className="space-y-2 mb-6">
           {service.features.map((feature: string, idx: number) => (
-            <li key={idx} className="text-sm text-muted-foreground flex items-center">
-              <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
+            <li
+              key={idx}
+              className="text-sm text-muted-foreground flex items-center group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors"
+            >
+              <div className="w-1.5 h-1.5 bg-gradient-to-tr from-teal-400 to-blue-500 rounded-full mr-2" />
               {feature}
             </li>
           ))}
         </ul>
-        <Button variant="outline" size="sm" className="w-full bg-transparent">
+        <Button
+          variant="outline"
+          size="sm"
+          className="w-full border border-slate-300 dark:border-slate-600 rounded-full hover:bg-gradient-to-tr hover:from-teal-400 hover:to-blue-500 hover:text-white transition-all duration-300"
+        >
           Learn More
         </Button>
       </CardContent>
@@ -131,19 +144,24 @@ export function ServicesSection() {
   )
 
   return (
-    <section id="services" className="py-20">
+    <section id="services" className="py-24 bg-gradient-to-b from-white via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-950 dark:to-black">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Micro-Services</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Specialized services designed to help your business thrive
+        {/* Section Intro */}
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent">
+            Our Micro-Services
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-4">
+            Specialized services designed to help your business thrive in the digital era
           </p>
         </div>
 
         {/* Core Services */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-semibold mb-8 text-center">Our Core Services</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mb-20">
+          <h3 className="text-2xl font-semibold mb-10 text-center text-slate-800 dark:text-slate-200">
+            Our Core Services
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {coreServices.map((service, index) => (
               <ServiceCard key={index} service={service} />
             ))}
@@ -152,8 +170,10 @@ export function ServicesSection() {
 
         {/* Additional Services */}
         <div>
-          <h3 className="text-2xl font-semibold mb-8 text-center">Additional Specialized Services</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h3 className="text-2xl font-semibold mb-10 text-center text-slate-800 dark:text-slate-200">
+            Additional Specialized Services
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {additionalServices.map((service, index) => (
               <ServiceCard key={index} service={service} />
             ))}
