@@ -18,7 +18,7 @@ interface JobApplicationSubmitData {
 
 interface ApplicationResponse {
   message?: string;
-  data?: any;
+  data?: unknown; // Changed from any to unknown
   error?: string;
 }
 
